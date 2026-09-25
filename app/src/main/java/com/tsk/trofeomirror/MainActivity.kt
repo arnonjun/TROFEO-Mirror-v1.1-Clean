@@ -1,5 +1,0 @@
-package com.tsk.trofeomirror
-import android.app.*;import android.content.*;import android.media.projection.MediaProjectionManager;import android.os.Bundle;import android.widget.*;import androidx.appcompat.app.AppCompatActivity
-class MainActivity:AppCompatActivity(){private val req=77
-override fun onCreate(b:Bundle?){super.onCreate(b);setContentView(R.layout.activity_main);val ip=findViewById<EditText>(R.id.ip);ip.setText("172.19.95.220");findViewById<Button>(R.id.start).setOnClickListener{val m=getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager;startActivityForResult(m.createScreenCaptureIntent(),req)};findViewById<Button>(R.id.stop).setOnClickListener{stopService(Intent(this,MirrorService::class.java))}}
-override fun onActivityResult(r:Int,c:Int,d:Intent?){super.onActivityResult(r,c,d);if(r==req&&c==RESULT_OK&&d!=null){val i=Intent(this,MirrorService::class.java);i.putExtra("code",c);i.putExtra("data",d);i.putExtra("ip",findViewById<EditText>(R.id.ip).text.toString());startForegroundService(i);Toast.makeText(this,"Mirror started",Toast.LENGTH_LONG).show()}}}
