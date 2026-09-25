@@ -1,16 +1,20 @@
-Car Media v1.5
-โครงสร้าง: S25 -> UDP 8766 -> PC -> TROFEO USB
-- ใช้ UDP ที่ v1.4.1 พิสูจน์แล้วว่าถึง PC
-- PC Bridge ส่ง JPEG ล่าสุดเข้า TROFEO
-- Latest Frame: ถ้า USB ช้าจะทิ้งภาพเก่า
-- Android 960x360, JPEG Q30, จำกัดประมาณ 20 FPS
+Car Media v1.6 - High Quality + Low Latency
 
-วิธีทดสอบ
-1. ปิด TRCC และ InfoPanel
-2. Firewall UDP 8766 เปิดไว้แล้วจากการทดสอบก่อนหน้า
-3. ปิด Diagnostic v1.4.1 ก่อน (สำคัญ เพราะใช้ port 8766 เดียวกัน)
-4. เปิด PC_Bridge/START_CAR_MEDIA_v1_5.bat
-5. ติดตั้ง/เปิด Car Media v1.5
+ค่าหลัก:
+- Capture 1280x480 (Native TROFEO)
+- JPEG Quality 45
+- Target ~20 FPS
+- UDP port 8766
+- Latest Frame / ไม่สะสมคิวภาพ
+- ชื่อแอป Car Media และ icon กุญแจซอลเดิม
+
+วิธีใช้:
+1. ปิด TRCC / InfoPanel และ Bridge รุ่นเก่าทั้งหมด
+2. เปิด PC_Bridge/START_CAR_MEDIA_v1_6.bat
+3. ถ้าเจอ WinError 10048 ให้ปิด process เก่าที่ใช้ port 8766 ก่อน
+4. Build/ติดตั้ง APK v1.6 จาก GitHub Actions
+5. เปิด Car Media > IP 172.19.95.220 (ถ้า IP PC ยังเดิม)
 6. START SCREEN MIRROR > Entire screen
-7. Bridge ควรขึ้น TROFEO READY และค่า RX / USB เพิ่มขึ้น
-8. ทดสอบ YouTube แล้วดู latency
+7. ทดสอบ YouTube แล้วดูทั้งความคมและ latency
+
+หมายเหตุ: Netflix/บริการ DRM อาจไม่อนุญาตให้ screen capture ภาพวิดีโอ
