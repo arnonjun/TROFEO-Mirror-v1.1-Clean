@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:padding="22dp" android:layout_width="match_parent" android:layout_height="match_parent">
-<TextView android:text="Car Media v1.4.1" android:textSize="28sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-<TextView android:text="UDP Diagnostic • 960×360 • Q30 • 20 FPS" android:textSize="16sp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<TextView android:text="Car Media v1.5" android:textSize="28sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<TextView android:text="UDP → PC → TROFEO • Latest Frame" android:textSize="16sp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
 <EditText android:id="@+id/ip" android:text="172.19.95.220" android:layout_width="match_parent" android:layout_height="wrap_content"/>
 <Button android:id="@+id/start" android:text="START SCREEN MIRROR" android:layout_width="match_parent" android:layout_height="68dp"/>
 <Button android:id="@+id/stop" android:text="STOP" android:layout_width="match_parent" android:layout_height="68dp"/>
-<TextView android:id="@+id/status" android:text="CAPTURE: WAITING\nJPEG: 0 bytes\nUDP SENT: 0\nFPS: 0\nPC IP: 172.19.95.220" android:textSize="20sp" android:paddingTop="18dp" android:lineSpacingExtra="8dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<TextView android:id="@+id/status" android:text="Ready • 960×360 • Q30 • 20 FPS" android:textSize="18sp" android:paddingTop="14dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
 </LinearLayout>

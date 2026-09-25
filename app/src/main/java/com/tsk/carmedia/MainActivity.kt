@@ -1,8 +1,5 @@
 package com.tsk.carmedia
 import android.app.*;import android.content.*;import android.media.projection.MediaProjectionManager;import android.os.Bundle;import android.widget.*;import androidx.appcompat.app.AppCompatActivity
 class MainActivity:AppCompatActivity(){private val rc=77;lateinit var ip:EditText;lateinit var st:TextView
-private val rx=object:android.content.BroadcastReceiver(){override fun onReceive(c:Context?,i:Intent?){if(i?.action=="com.tsk.carmedia.STATUS")st.text=i.getStringExtra("text")?:""}}
 override fun onCreate(b:Bundle?){super.onCreate(b);setContentView(R.layout.activity_main);ip=findViewById(R.id.ip);st=findViewById(R.id.status);findViewById<Button>(R.id.start).setOnClickListener{startActivityForResult((getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager).createScreenCaptureIntent(),rc)};findViewById<Button>(R.id.stop).setOnClickListener{stopService(Intent(this,MirrorService::class.java));st.text="STOPPED"}}
-override fun onStart(){super.onStart();androidx.core.content.ContextCompat.registerReceiver(this,rx,IntentFilter("com.tsk.carmedia.STATUS"),androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED)}
-override fun onStop(){try{unregisterReceiver(rx)}catch(_:Exception){};super.onStop()}
-override fun onActivityResult(r:Int,c:Int,d:Intent?){super.onActivityResult(r,c,d);if(r==rc&&c==RESULT_OK&&d!=null){startForegroundService(Intent(this,MirrorService::class.java).putExtra("code",c).putExtra("data",d).putExtra("ip",ip.text.toString()));st.text="CAPTURE: STARTING...\\nPC IP: ${ip.text}"}}}
+override fun onActivityResult(r:Int,c:Int,d:Intent?){super.onActivityResult(r,c,d);if(r==rc&&c==RESULT_OK&&d!=null){startForegroundService(Intent(this,MirrorService::class.java).putExtra("code",c).putExtra("data",d).putExtra("ip",ip.text.toString()));st.text="MIRROR STARTED ✓"}}}
