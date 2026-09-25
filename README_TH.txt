@@ -1,6 +1,7 @@
-Car Media v1.3
-- ชื่อใหม่ Car Media
-- ใช้รูปกุญแจซอลที่ส่งมาเป็น icon
-- Latest Frame ทั้ง Android และ PC: ไม่สะสมคิวภาพเก่า
-- แสดง Sent / Dropped ใน notification
-วิธีใช้: ปิด TRCC/InfoPanel > เปิด PC_Bridge > TEST PC CONNECTION > START SCREEN MIRROR > Entire screen > ทดสอบ YouTube
+Car Media v1.4 Ultra Low Latency
+- UDP แทน HTTP ต่อเฟรม
+- 960x360 / JPEG Q30 / จำกัด 20 FPS
+- Latest Frame ไม่สะสมภาพเก่า
+ใช้ PC Bridge v1.4 ตัวใหม่ (UDP port 8766)
+Windows Firewall: ถ้าถาม ให้ Allow Python บน Private network
+ปิด TRCC และ InfoPanel ก่อนเปิด Bridge

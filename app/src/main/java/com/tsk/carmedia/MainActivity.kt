@@ -1,8 +1,5 @@
 package com.tsk.carmedia
-import android.app.*;import android.content.*;import android.media.projection.MediaProjectionManager;import android.os.Bundle;import android.widget.*;import androidx.appcompat.app.AppCompatActivity;import okhttp3.*;import java.io.IOException
-class MainActivity:AppCompatActivity(){private val rc=77;lateinit var ip:EditText;lateinit var st:TextView;val http=OkHttpClient()
-override fun onCreate(b:Bundle?){super.onCreate(b);setContentView(R.layout.activity_main);ip=findViewById(R.id.ip);st=findViewById(R.id.status)
-findViewById<Button>(R.id.test).setOnClickListener{st.text="Status: Testing...";http.newCall(Request.Builder().url("http://${ip.text}:8765/ping").build()).enqueue(object:Callback{override fun onFailure(c:Call,e:IOException){runOnUiThread{st.text="Status: PC NOT CONNECTED"}};override fun onResponse(c:Call,r:Response){r.close();runOnUiThread{st.text="Status: PC CONNECTED ✓"}}})}
-findViewById<Button>(R.id.start).setOnClickListener{startActivityForResult((getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager).createScreenCaptureIntent(),rc)}
-findViewById<Button>(R.id.stop).setOnClickListener{stopService(Intent(this,MirrorService::class.java));st.text="Status: STOPPED"}}
-override fun onActivityResult(r:Int,c:Int,d:Intent?){super.onActivityResult(r,c,d);if(r==rc&&c==RESULT_OK&&d!=null){startForegroundService(Intent(this,MirrorService::class.java).putExtra("code",c).putExtra("data",d).putExtra("ip",ip.text.toString()));st.text="Status: MIRROR STARTED ✓"}}}
+import android.app.*;import android.content.*;import android.media.projection.MediaProjectionManager;import android.os.Bundle;import android.widget.*;import androidx.appcompat.app.AppCompatActivity
+class MainActivity:AppCompatActivity(){private val rc=77;lateinit var ip:EditText;lateinit var st:TextView
+override fun onCreate(b:Bundle?){super.onCreate(b);setContentView(R.layout.activity_main);ip=findViewById(R.id.ip);st=findViewById(R.id.status);findViewById<Button>(R.id.start).setOnClickListener{startActivityForResult((getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager).createScreenCaptureIntent(),rc)};findViewById<Button>(R.id.stop).setOnClickListener{stopService(Intent(this,MirrorService::class.java));st.text="STOPPED"}}
+override fun onActivityResult(r:Int,c:Int,d:Intent?){super.onActivityResult(r,c,d);if(r==rc&&c==RESULT_OK&&d!=null){startForegroundService(Intent(this,MirrorService::class.java).putExtra("code",c).putExtra("data",d).putExtra("ip",ip.text.toString()));st.text="MIRROR STARTED ✓"}}}
